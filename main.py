@@ -38,6 +38,7 @@ def companyNameLookUp(companyName):
         'GDC': 'Grandspan Development Corp.',
         'HII': 'Himmel Industries, Inc.',
         'LRC': 'Landcom Realty Corp.',
+        # 'LRC': 'LANDCOM REALTY CORP.',
         'LTG': 'LT Group, Inc. (Parent Company)',
         'DIR': 'LTGC Directors',
         'MAC': 'MacroAsia Corp., Subsidiaries and Affiliates',
@@ -189,7 +190,7 @@ def addingDataValidation(currentSheet, numrows):
     Willing_to_be_Vaccinated_data_val.add("AT3:AT" + str(row))
     A2_Senior_data_val.add("BD3:BD" + str(row))
     A3_With_Co_morbidity_data_val.add("BE3:BE" + str(row))
-    AgeRiskFactor_data_val.add("BF3:BF" + str(row))
+    # AgeRiskFactor_data_val.add("BF3:BF" + str(row))
     Confirmed_Vaccination_Site_data_val.add("BL3:BL" + str(row))
 
     # # set data validation(dropdown)
@@ -272,7 +273,7 @@ def getData(inFile_HHLTGC, outPath):
         currentSheet = theFile["Eligible Population"]
         addingDataValidation(currentSheet, numrows)
 
-        set_border(currentSheet, "A3:BL"+str(numrows+2))
+        set_border(currentSheet, "A3:BN"+str(numrows+2))
 
         theFile.save(templateFile)
 
