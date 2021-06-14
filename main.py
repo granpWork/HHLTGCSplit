@@ -273,7 +273,8 @@ def getData(inFile_HHLTGC, outPath):
         currentSheet = theFile["Eligible Population"]
         addingDataValidation(currentSheet, numrows)
 
-        set_border(currentSheet, "A3:BN"+str(numrows+2))
+        # set_border(currentSheet, "A3:BN"+str(numrows+2))
+        set_border(currentSheet, "A3:BL"+str(numrows+2))
 
         theFile.save(templateFile)
 
