@@ -31,6 +31,7 @@ class Util:
             'VMC': 'Victorias Milling Company, Inc. (VMC)',
             'ZHI': 'Zebra Holdings, Inc.',
             'STN': 'Sabre Travel Network Phils., Inc.',
+            'OGC': 'OGC'
         }
         company_Code = ""
         for key, value in companyDict.items():
