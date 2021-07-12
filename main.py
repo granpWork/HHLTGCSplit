@@ -10,7 +10,6 @@ import os.path
 from os import path
 from openpyxl import load_workbook
 from openpyxl.worksheet.datavalidation import DataValidation
-from loaders import TextLoader
 from openpyxl.styles.borders import Border, Side
 from openpyxl.styles import Border, Side
 
@@ -69,19 +68,24 @@ def companyNameLookUp(companyName):
 
 
 def duplicateTemplateHHLTGC(tempLTGC_Path, out, compCode, companyName):
-    companyDir = out + "/" + compCode
+    companyDir = out
 
-    # creating new DIR base on company code
-    if not path.exists(out + "/" + compCode):
-        os.mkdir(os.path.join(out, compCode))
+    # # creating new DIR base on company code
+    # if not path.exists(out + "/" + compCode):
+    #     os.mkdir(os.path.join(out, compCode))
 
     # # creating new DIR base on company code
     # os.mkdir(os.path.join(out, compCode))
 
-    shutil.copy(tempLTGC_Path,
-                companyDir + "/" + companyName + "_HH.xlsx")
+    # shutil.copy(tempLTGC_Path,
+    #             companyDir + "/" + companyName + "_HH.xlsx")
+    #
+    # return companyDir + "/" + companyName + "_HH.xlsx"
 
-    return companyDir + "/" + companyName + "_HH.xlsx"
+    shutil.copy(tempLTGC_Path,
+                companyDir + "/" + companyName + "_HHLTGC_CEIRMasterlist.xlsx")
+
+    return companyDir + "/" + companyName + "_HHLTGC_CEIRMasterlist.xlsx"
 
 
 def addingDataValidation(currentSheet, numrows):
@@ -241,7 +245,6 @@ def getData(inFile_HHLTGC, outPath):
     print("============================")
     print("Starting HH LTGC Files")
     print("============================")
-    loader = TextLoader()
 
     df = pd.read_excel(inFile_HHLTGC, sheet_name='Eligible Population', header=1,
                        dtype={'PhilHealth_ID*': str, 'Contact_number_of_employer*': str,
@@ -298,11 +301,12 @@ if __name__ == '__main__':
     today = datetime.today()
     dateTime = today.strftime("%m_%d_%y_%H%M%S")
 
-    inPath = r"/Users/ranperedo/Documents/Vaccine/LTGSplit/in"
-    outPath = r"/Users/ranperedo/Documents/Vaccine/LTGSplit/out/hhltgc"
-    templateFilePath = r"/Users/ranperedo/Documents/Vaccine/LTGSplit/template"
+    inPath = r"/Users/Ran/Documents/Vaccine/LTGSplit/in"
+    outPath = r"/Users/Ran/Documents/Vaccine/LTGSplit/out/hhltgc"
+    templateFilePath = r"/Users/Ran/Documents/Vaccine/LTGSplit/template"
 
-    inFile_HHLTGC = inPath + "/HHLTGC_CEIRMasterlist.xlsx"
+    # inFile_HHLTGC = inPath + "/HHLTGC_CEIRMasterlist.xlsx"
+    inFile_HHLTGC = inPath + "/HHLTGC_CEIRMasterlist_0625_1038AM.xlsx"
 
     tempHHLTGC_Path = templateFilePath + "/HHLTGC_CEIRMasterlist_ExtraCols.xlsx"
 
